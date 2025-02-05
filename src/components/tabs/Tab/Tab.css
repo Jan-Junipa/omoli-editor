@@ -7,27 +7,4 @@
     flex-shrink: 1;
 }
 
-@keyframes handMove {
-    from {left: -1.2em;}
-    to {left: -1.4em;}
-}
-
-.selected::before{
-    display:inline-block;
-    position:absolute;
-    vertical-align: middle;
-    content:"";
-    width:1.2em;
-    height:1.2em;
-    background-image: url(../../../assets/ACSArrow.png);
-    background-repeat: no-repeat;
-    background-size:100% 100%;
-    image-rendering: pixelated;
-
-    animation: alternate;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-name: handMove;
-    animation-duration:0.4s;
-}
 
