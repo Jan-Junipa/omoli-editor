@@ -10,11 +10,15 @@ interface FilePickerProps {
     accept: string;
     text: string;
     onFileChanged: (file: FilePickerFile | null)=>void;
+    onMouseEnter?: ()=>void;
+    onMouseLeave?: ()=>void;
+
 }
 
 function FilePicker(props: FilePickerProps) {
 
     const [fileName, setFileName] = useState<string |null>(null);
+    const [hover, setHover] = useState<boolean>(false);
 
     const onFileChanged:ChangeEventHandler = event => {
         const target: HTMLInputElement = (event.target as HTMLInputElement);
@@ -44,7 +48,11 @@ function FilePicker(props: FilePickerProps) {
 
     return (
     <>
-            <label className="omoriBoxSmall fileInput" htmlFor="dialogueFileInput"> {props.text} </label>
+            <label 
+            className={"omoriBoxSmall fileInput " + (hover ? "selectHand" : "")} 
+            htmlFor="dialogueFileInput"
+            onMouseEnter={()=>setHover(true)}
+            onMouseLeave={()=>setHover(false)}> {props.text} </label>
             <input onChange={onFileChanged} type="file" accept={props.accept} name="dialogueFileInput" id="dialogueFileInput" />
             {fileName ? <p>{fileName}</p> : null}
     </>

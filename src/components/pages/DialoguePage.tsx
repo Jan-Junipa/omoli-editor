@@ -44,7 +44,7 @@ function DialoguePage(props: DialogueProps) {
     const setMessages = props.state.setMessages;
 
     //const [file, setFile] = useState<ParsedYaml | null>(null);
-    //const [messages, setMessages] = useState<MessageList>({});
+    //const [messages, setMessages] = useState<MessageList>({});+
     const [saveHover, setSaveHover] = useState<boolean>(false);
     const [saveErrorText, setSaveErrorText] = useState<string>("");
     
@@ -108,7 +108,10 @@ function DialoguePage(props: DialogueProps) {
     }
 
     return <>
-        <FilePicker text="LOAD DIALOGUE FILE" accept=".yaml" onFileChanged={fileChanged}></FilePicker>
+        <FilePicker 
+        text="LOAD DIALOGUE FILE" 
+        accept=".yaml" 
+        onFileChanged={fileChanged}></FilePicker>
         {
         Object.values(messages).map(message => {
             
