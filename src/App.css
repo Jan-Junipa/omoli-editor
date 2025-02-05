@@ -3,6 +3,19 @@
   src: url(assets/OMORI_GAME2.ttf);
 }
 
+@media (width <= 900px) {
+  #root {
+    max-width: none;
+    font-size: 3vw;
+  }
+}
+@media (width > 900px) {
+  #root {
+    
+    font-size: 2em;
+  }
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;

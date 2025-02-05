@@ -4,17 +4,6 @@ body, html{
   min-height: 100%;
 }
 
-@media (width <= 900px) {
-  #root {
-    font-size: 1.5em;
-  }
-}
-@media (width > 900px) {
-  #root {
-    font-size: 2em;
-  }
-}
-
 .omoriBox {
   background-color: black;
   border: 0.22em solid white;
