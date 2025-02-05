@@ -1,0 +1,62 @@
+.spTextBoxWrite {
+    font-size: 2em;
+    height:3em;
+    flex-grow: 6;
+    text-align: left;
+}
+
+.sitelenLasinaWrite {
+    resize: none;
+    font-size: 1em;
+    font-family: omoriSitelen;
+    width: 90%;
+    height: 3em;
+}
+
+.writePageErrorText {
+    color: red;
+}
+
+.guideToggle {
+    cursor: pointer;
+    position:relative;
+    
+}
+.guideHeader {
+    font-size: 1.5em;
+}
+
+@keyframes guideHandMove {
+    from {top: 0.05em;}
+    to {top: 0.2em;}
+  }
+
+.guideHeader::before {
+    right: 0em;
+    display:inline-block;
+    position:absolute;
+    vertical-align: middle;
+    content:"";
+    width:1em;
+    height:1em;
+    background-image: url("../../assets/OmoriArrowDown.png");
+    background-repeat: no-repeat;
+    background-size:100% 100%;
+    image-rendering: pixelated;
+  
+    animation: alternate;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-name: guideHandMove;
+    animation-duration:0.4s;
+}
+
+.guide{
+    transition: height 1s;
+    overflow:hidden;
+}
+
+.guideContainer {
+    display: flex;
+    flex-direction: column;
+}
