@@ -1,7 +1,8 @@
-.messageContainer {
-    padding: 0.5em;
+.textBoxContainer {
+    padding: 0em;
     margin: 1em;
-    box-shadow: 0em 0em 0.3em 0em black;
+    background-color: black;
+    color:white;
 }
 
 .newTextContainer {
@@ -10,28 +11,30 @@
     justify-content: stretch;
     align-items: stretch;
 }
-.lasinaTextBox {
+.textBoxLasinaContainer {
     flex-grow: 4;
 }
-.lasinaTextInput {
+.textBoxLasinaInput {
     resize: none;
     font-size: 1em;
     font-family: omoriSitelen;
     width: 100%;
-    height: 100%;
+    height: 95%;
+    background-color: black;
+    color: white;
 }
-.spTextBox {
+.textBoxSitelenPona {
     width: 10em;
-    height:3em;
+    height:4em;
     flex-grow: 6;
     text-align: left;
     margin-top: 0;
     margin-bottom: 0;
 }
-.originalTextBox {
+.textBoxOriginal {
     margin-bottom: 0.4em;
 }
 
-.messageErrorTextBox{
+.textBoxErrorMessage{
     color: red;
 }

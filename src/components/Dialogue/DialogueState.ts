@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MessageList, ParsedYaml } from "../pages/DialoguePage";
+import { MessageList, ParsedYaml } from "../../pages/DialoguePage";
 
 function useDialogueState() {
     const [file, setFile] = useState<ParsedYaml | null>(null);

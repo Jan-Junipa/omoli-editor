@@ -1,5 +1,5 @@
 import "./Message.css";
-import useTextBox from "../TextBox/TextBox";
+import TextEdit from "../General/TextEdit";
 
 export interface MessageProps {
     originalText: string;
@@ -8,30 +8,14 @@ export interface MessageProps {
 }
 
 function Message({originalText, initialSitelenLasina, onEdit}: MessageProps) {
-    const {sitelenLasina, sitelenPona, errorText, onTextChange} = useTextBox({initialSitelenLasina});
     
-    function onTextEvent(text: string) {
-        onTextChange(text);
-        onEdit(text);
-    }
-
     return (
-        <div className="messageContainer">
-            <div className="originalTextBox">
-                {originalText}
-            </div>
-            <div className="newTextContainer">
-                <div className="lasinaTextBox">
-                    <textarea 
-                    className="lasinaTextInput" value={sitelenLasina} onChange={e=>onTextEvent(e.target.value)}></textarea>
-                </div>
-                <div className="spTextBox omoriBox">
-                    {sitelenPona}
-                </div>
-            </div>
-            <div className="messageErrorTextBox">
-                    {errorText}
-                </div>
+        <div className="omoriBox">
+            <TextEdit
+            originalText={originalText}
+            initialSitelenLasina={initialSitelenLasina}
+            onTextChange={text=>onEdit(text)}
+            />
         </div>
     )
 }

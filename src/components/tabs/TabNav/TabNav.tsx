@@ -1,10 +1,11 @@
 import { useState } from "react";
 import Tab from "../Tab/Tab";
-import DialoguePage from "../../pages/DialoguePage";
+import DialoguePage from "../../../pages/DialoguePage";
 import  "./TabNav.css";
-import WIPPage from "../../pages/WIPPage";
-import WritePage from "../../pages/WritePage";
+import WritePage from "../../../pages/WritePage";
 import useDialogueState from "../../Dialogue/DialogueState";
+import JsonEditPage from "../../../pages/JsonEditPage";
+import useJsonFileState from "../../Json/JsonEditState";
 
 interface TabAttributes {
     text: string,
@@ -16,6 +17,7 @@ interface TabAttributes {
 function TabNav() {
     const [selectedTab, selectTab] = useState(0);
     const dialogueState = useDialogueState();
+    const jsonFileState = useJsonFileState();
 
     const TABS: TabAttributes[] = [
         {
@@ -27,19 +29,10 @@ function TabNav() {
             component: <DialoguePage state={dialogueState} />
         },
         {
-            text: "WEAPONS",
-            component: <WIPPage/>
+            text: "DATA",
+            component: <JsonEditPage state={jsonFileState} />
         },
-        {
-            text: "CHARMS",
-            component: <WIPPage/>
-        },
-        {
-            text: "SKILLS",
-            component: <WIPPage/>
-        }
     ]
-
     return (
     <div>
         <div className={"navTabs omoriBox"}>

@@ -1,29 +1,10 @@
-.spTextBoxWrite {
-    font-size: 2em;
-    height:3em;
-    flex-grow: 6;
-    text-align: left;
-}
-
-.sitelenLasinaWrite {
-    resize: none;
-    font-size: 1em;
-    font-family: omoriSitelen;
-    width: 90%;
-    height: 3em;
-}
-
-.writePageErrorText {
-    color: red;
-}
-
-.guideToggle {
+.expandToggle {
     cursor: pointer;
     position:relative;
-    
 }
-.guideHeader {
+.expandHeader {
     font-size: 1.5em;
+    overflow:hidden;
 }
 
 @keyframes guideHandMove {
@@ -31,7 +12,7 @@
     to {top: 0.2em;}
   }
 
-.guideHeader::before {
+.expandHeader::before {
     right: 0em;
     display:inline-block;
     position:absolute;
@@ -51,12 +32,13 @@
     animation-duration:0.4s;
 }
 
-.guide{
+.expandContent{
     transition: height 1s;
     overflow:hidden;
 }
 
-.guideContainer {
+.expandContentContainer {
     display: flex;
     flex-direction: column;
+    overflow:hidden;
 }

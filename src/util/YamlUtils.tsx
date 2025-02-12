@@ -1,5 +1,5 @@
 import { Document, Pair, Scalar, YAMLMap } from "yaml";
-import { MessageList, ParsedMessage } from "../components/pages/DialoguePage";
+import { MessageList, ParsedMessage } from "../pages/DialoguePage";
 
 /*
 function getAttributeInternal(map: YAMLMap, attrName: string): unknown {
