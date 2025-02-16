@@ -148,7 +148,9 @@ const lasinaToSp: {[id: string]: string} = {
     "te":"㊋",
     "to":"㊌",
     "te1":"㊍",
-    "to1":"㊎"
+    "to1":"㊎",
+    "soto":"㊐",
+    "teje":"㊑"
 };
 
 const cartoucheSpacing = "㐓";
