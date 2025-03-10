@@ -1,4 +1,4 @@
-import { ChangeEventHandler, useState } from "react";
+import { ChangeEventHandler, useId, useState } from "react";
 import "./FilePicker.css";
 
 export interface FilePickerFile {
@@ -10,6 +10,7 @@ interface FilePickerProps {
     text: string;
     accept?: string;
     show?: boolean;
+    showFilename?: boolean;
     onFileChanged: (file: FilePickerFile | null)=>void;
     onMouseEnter?: ()=>void;
     onMouseLeave?: ()=>void;
@@ -17,7 +18,9 @@ interface FilePickerProps {
 }
 
 function FilePicker(props: FilePickerProps) {
+    const inputId = useId();
     const show = props.show == undefined ? true : props.show;
+    const showFilename = props.showFilename == undefined ? true : props.showFilename;
 
     const [fileName, setFileName] = useState<string |null>(null);
     const [hover, setHover] = useState<boolean>(false);
@@ -54,11 +57,11 @@ function FilePicker(props: FilePickerProps) {
         <div className="filePickerContainer">
             <label 
             className={"omoriBoxSmall fileInput " + (hover ? "selectHand" : "")} 
-            htmlFor="dialogueFileInput"
+            htmlFor={inputId}
             onMouseEnter={()=>setHover(true)}
             onMouseLeave={()=>setHover(false)}> {props.text} </label>
-            <input onChange={onFileChanged} type="file" accept={props.accept} name="dialogueFileInput" id="dialogueFileInput" />
-            {fileName ? <p>{fileName}</p> : null}
+            <input onChange={onFileChanged} type="file" accept={props.accept} name="dialogueFileInput" id={inputId} />
+            {showFilename && fileName ? <p>{fileName}</p> : null}
         </div>
         : 
         null

@@ -1,4 +1,4 @@
-const lasinaToSp: {[id: string]: string} = {
+export const lasinaToSpDict: {[id: string]: string} = {
     "a":"㈀",
     "akesi":"㈁",
     "ala":"㈂",
@@ -150,7 +150,8 @@ const lasinaToSp: {[id: string]: string} = {
     "te1":"㊍",
     "to1":"㊎",
     "soto":"㊐",
-    "teje":"㊑"
+    "teje":"㊑",
+    "misikeke":"㊆"
 };
 
 const cartoucheSpacing = "㐓";
@@ -284,7 +285,7 @@ function Lexer(input: CharStream) {
                 return {type: "groupStart",value: peekStr}; 
             }
             if(!isTokiPona(input.peek())) {
-                const sitelenPona = lasinaToSp[str];
+                const sitelenPona = lasinaToSpDict[str];
                 if(sitelenPona) {
                     return {type: "sitelenPona", value: sitelenPona};
                 } else {
@@ -293,7 +294,7 @@ function Lexer(input: CharStream) {
             }
             str += input.next();
         }
-        const sitelenPona = lasinaToSp[str];
+        const sitelenPona = lasinaToSpDict[str];
         if(sitelenPona) {
             return {type: "sitelenPona", value: sitelenPona};
         } else {

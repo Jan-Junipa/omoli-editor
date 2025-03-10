@@ -6,6 +6,7 @@ import WritePage from "../../../pages/WritePage";
 import useDialogueState from "../../Dialogue/DialogueState";
 import JsonEditPage from "../../../pages/JsonEditPage";
 import useJsonFileState from "../../Json/JsonEditState";
+import NameInputGen from "../../../pages/NameInputGenPage";
 
 interface TabAttributes {
     text: string,
@@ -31,6 +32,10 @@ function TabNav() {
         {
             text: "DATA",
             component: <JsonEditPage state={jsonFileState} />
+        },
+        {
+            text: "NAME INPUT",
+            component: <NameInputGen />
         },
     ]
     return (
