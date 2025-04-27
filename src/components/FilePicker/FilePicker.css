@@ -1,0 +1,14 @@
+input[type="file"] {
+    display: none;
+}
+
+.fileInput{
+    padding: 0.1em;
+    cursor: pointer;
+    position:relative;
+    font-size: 1.5em;
+}
+
+.filePickerContainer {
+    margin: 1em;
+}

@@ -1,0 +1,10 @@
+.tabText{
+    font-size: 1.5em;
+    display:inline-block;
+    cursor:pointer;
+    position:relative;
+    user-select: none;
+    flex-shrink: 1;
+}
+
+

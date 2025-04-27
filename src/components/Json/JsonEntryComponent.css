@@ -1,0 +1,13 @@
+.jsonContainer {
+    padding: 0.5em;
+    margin: 1em;
+    box-shadow: 0em 0em 0.3em 0em black;
+}
+.jsonTextBoxContainer {
+    padding-bottom: 1em;
+}
+
+.jsonLasinaInput {
+    background-color: black;
+    color: white;
+}

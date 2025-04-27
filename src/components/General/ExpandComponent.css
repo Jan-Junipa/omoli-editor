@@ -1,0 +1,44 @@
+.expandToggle {
+    cursor: pointer;
+    position:relative;
+}
+.expandHeader {
+    font-size: 1.5em;
+    overflow:hidden;
+}
+
+@keyframes guideHandMove {
+    from {top: 0.05em;}
+    to {top: 0.2em;}
+  }
+
+.expandHeader::before {
+    right: 0em;
+    display:inline-block;
+    position:absolute;
+    vertical-align: middle;
+    content:"";
+    width:1em;
+    height:1em;
+    background-image: url("../../assets/OmoriArrowDown.png");
+    background-repeat: no-repeat;
+    background-size:100% 100%;
+    image-rendering: pixelated;
+  
+    animation: alternate;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-name: guideHandMove;
+    animation-duration:0.4s;
+}
+
+.expandContent{
+    transition: height 1s;
+    overflow:hidden;
+}
+
+.expandContentContainer {
+    display: flex;
+    flex-direction: column;
+    overflow:hidden;
+}

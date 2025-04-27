@@ -1,0 +1,9 @@
+.saveDialogueBox {
+    font-family: omoriSitelen;
+    font-size: 1.5em;
+    cursor: pointer;
+    position:relative;
+}
+.saveDialogueError {
+    color: red;
+}

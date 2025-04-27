@@ -1,0 +1,50 @@
+body, html{
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+.omoriBox {
+  background-color: black;
+  border: 0.22em solid white;
+  padding: 0.1em;
+  color: white;
+  box-shadow: 0em 0em 0em 0.09em  black;
+  margin: 0.4em;
+}
+
+.omoriBoxSmall {
+  background-color: black;
+  border: 0.1em solid white;
+  color: white;
+  box-shadow: 0em 0em 0em 0.09em  black;
+  margin: 0.2em;
+}
+
+@keyframes handMove {
+  from {left: -1.2em;}
+  to {left: -1.4em;}
+}
+
+.selectHand::before{
+  display:inline-block;
+  position:absolute;
+  vertical-align: middle;
+  content:"";
+  width:1.2em;
+  height:1.2em;
+  background-image: url("assets/OmoriArrowRight.png");
+  background-repeat: no-repeat;
+  background-size:100% 100%;
+  image-rendering: pixelated;
+
+  animation: alternate;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-name: handMove;
+  animation-duration:0.4s;
+}
+
+.errorMessage {
+  color: red;
+}
