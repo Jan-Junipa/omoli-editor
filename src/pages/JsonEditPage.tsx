@@ -206,7 +206,7 @@ function JsonEditPage({ state }: JsonEditProps) {
                     <br />
                     The "SAVE" button will save both the sitelen lasina and the original text, but it must be exported to be usable by RPGMaker.
                     <br />
-                    <span style={{color:"red"}}>-- SAVING seems to be broken at the moment --</span> 
+                    <span style={{color:"red"}}>-- SAVING seems to be broken at the moment. For now just save and discard the original name/desc --</span> 
                     <br />
                     If you've changed anything from RPGMaker (for example, edited a skill's script), you can load these changes into your save
                     by clicking the "UPDATE" button and selecting the changed file (must be the same kind of file!)

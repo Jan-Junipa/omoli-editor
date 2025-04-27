@@ -66,8 +66,12 @@ function generateNameArrays() {
 function NameInputGen() {
     const nameArrays = generateNameArrays();
     return (
-        <textarea style={{ fontFamily: "omoriSitelen", fontSize: "1em" }}
+        <>
+            This page generates the code for the player name input screen
+            <br></br>
+            <textarea style={{ fontFamily: "omoriSitelen", fontSize: "1em" }}
             defaultValue={nameArrays}></textarea>
+        </>
     );
 }
 
