@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export type JsonEntry = Record<string, any>;
 
@@ -23,8 +23,29 @@ export interface JsonEditState {
 }
 
 function useJsonFileState(): JsonEditState {
-    const [file, setFile] = useState<JsonFile | null>(null);
-    const [edits, setEdits] = useState<JsonEntryEdit[]>([]);
+    
+    const [file, setFile] = useState<JsonFile | null>(()=>{
+        const file = JSON.parse(localStorage.getItem("jsonFile") ?? "null");
+        if(!file) return null;
+        return file;
+    });
+
+    const [edits, setEdits] = useState<JsonEntryEdit[]>(()=>{
+        const changedEdits = JSON.parse(localStorage.getItem("jsonEdits") ?? "null") ?? [];
+        return changedEdits;
+    });
+
+    useEffect(()=>{
+        if(file) {
+           localStorage.setItem("jsonFile", JSON.stringify(file));
+        } else {
+            localStorage.removeItem("jsonFile");
+        }
+    },[file]);
+
+    useEffect(()=>{
+        localStorage.setItem("jsonEdits", JSON.stringify(edits));
+    }, [edits]);
 
     return {
         file,

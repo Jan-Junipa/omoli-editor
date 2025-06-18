@@ -1,4 +1,4 @@
-import TabNav from "../components/tabs/TabNav/TabNav";
+import TabNav from "../components/Tabs/TabNav/TabNav";
 
 
 function Page() {

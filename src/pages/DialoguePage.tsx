@@ -44,9 +44,6 @@ function DialoguePage(props: DialogueProps) {
     const messages = props.state.messages;
     const setFile = props.state.setFile;
     const setMessages = props.state.setMessages;
-
-    //const [file, setFile] = useState<ParsedYaml | null>(null);
-    //const [messages, setMessages] = useState<MessageList>({});+
     const [saveErrorText, setSaveErrorText] = useState<string>("");
 
     const saveDialogue = () => {
@@ -99,6 +96,7 @@ function DialoguePage(props: DialogueProps) {
         <FilePicker
             text="LOAD DIALOGUE FILE"
             accept=".yaml"
+            fileName={file?.fileName ?? null}
             onFileChanged={fileChanged}></FilePicker>
         {
             Object.values(messages).map(message =>

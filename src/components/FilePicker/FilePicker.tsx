@@ -10,6 +10,7 @@ interface FilePickerProps {
     text: string;
     accept?: string;
     show?: boolean;
+    fileName: string | null;
     showFilename?: boolean;
     onFileChanged: (file: FilePickerFile | null)=>void;
     onMouseEnter?: ()=>void;
@@ -22,7 +23,6 @@ function FilePicker(props: FilePickerProps) {
     const show = props.show == undefined ? true : props.show;
     const showFilename = props.showFilename == undefined ? true : props.showFilename;
 
-    const [fileName, setFileName] = useState<string |null>(null);
     const [hover, setHover] = useState<boolean>(false);
 
     const onFileChanged:ChangeEventHandler = event => {
@@ -47,7 +47,6 @@ function FilePicker(props: FilePickerProps) {
                 return;
             }
             props.onFileChanged({name: file.name, content: content as string})
-            setFileName(file.name);
         }
     }
 
@@ -61,7 +60,7 @@ function FilePicker(props: FilePickerProps) {
             onMouseEnter={()=>setHover(true)}
             onMouseLeave={()=>setHover(false)}> {props.text} </label>
             <input onChange={onFileChanged} type="file" accept={props.accept} name="dialogueFileInput" id={inputId} />
-            {showFilename && fileName ? <p>{fileName}</p> : null}
+            {showFilename && props.fileName ? <p>{props.fileName}</p> : null}
         </div>
         : 
         null

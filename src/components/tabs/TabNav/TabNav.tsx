@@ -20,6 +20,7 @@ function TabNav() {
     const dialogueState = useDialogueState();
     const jsonFileState = useJsonFileState();
 
+
     const TABS: TabAttributes[] = [
         {
             text: 'WRITE',

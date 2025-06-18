@@ -64,6 +64,10 @@ function toEntryEdit(obj: unknown): JsonEntryEdit | null {
     }
 }
 
+
+/// TODO!!!
+/// Use a json editing UI component from a library
+/// Probably easier and much more useful
 function JsonEditPage({ state }: JsonEditProps) {
 
     const [saveErrorText, setSaveErrorText] = useState<string>("");
@@ -107,11 +111,11 @@ function JsonEditPage({ state }: JsonEditProps) {
         }
 
         const oldFileName = state.file.fileName;
-        const newFileName = oldFileName.endsWith(".save") 
-        ? 
-        oldFileName
-        : 
-        oldFileName + ".save";
+        const newFileName = oldFileName.endsWith(".save")
+            ?
+            oldFileName
+            :
+            oldFileName + ".save";
 
         downloadFile(newFileName, JSON.stringify(newFile, null, 2));
         setExportErrorText("");
@@ -133,18 +137,18 @@ function JsonEditPage({ state }: JsonEditProps) {
                 entry["nameLasina"] = undefined;
                 entry["descriptionLasina"] = undefined;
                 entry["parsed"] = undefined;
-                
-                if (edit.name == ""){
+
+                if (edit.name == "") {
                     entry["name"] = edit.originalName;
                 } else {
                     entry["name"] = encodeSP(edit.name);
                 }
-                if (!edit.desc){
+                if (!edit.desc) {
                     entry["description"] = edit.originalDesc;
                 } else {
                     entry["description"] = encodeSP(edit.desc);
                 }
-                
+
             });
         } catch (error) {
             if (error instanceof Error) { console.log(error.message) }
@@ -152,12 +156,12 @@ function JsonEditPage({ state }: JsonEditProps) {
             return;
         }
         const oldFileName = state.file.fileName;
-        const newFileName = oldFileName.endsWith(".save") 
-        ? 
-        oldFileName.slice(0, oldFileName.length - ".save".length) 
-        : 
-        oldFileName;
-        
+        const newFileName = oldFileName.endsWith(".save")
+            ?
+            oldFileName.slice(0, oldFileName.length - ".save".length)
+            :
+            oldFileName;
+
         downloadFile(newFileName, JSON.stringify(newFile, null, 2));
         setExportErrorText("");
     }
@@ -165,19 +169,19 @@ function JsonEditPage({ state }: JsonEditProps) {
     function editEntry(edit: JsonEntryEdit, index: number) {
         if (state.file == null) return;
         const newEdits = Array.from(state.edits)
-        if(combineChecked) {
+        if (combineChecked) {
             newEdits
-            .filter(entry=>entry.originalName == edit.originalName)
-            .map(entry=>newEdits.indexOf(entry))
-            .forEach(index=>{
-                newEdits[index].name = edit.name;
-                newEdits[index].desc = edit.desc;
-            });
-            
+                .filter(entry => entry.originalName == edit.originalName)
+                .map(entry => newEdits.indexOf(entry))
+                .forEach(index => {
+                    newEdits[index].name = edit.name;
+                    newEdits[index].desc = edit.desc;
+                });
+
         } else {
             newEdits[index] = edit;
         }
-        
+
         state.setEdits(newEdits);
     }
 
@@ -193,7 +197,7 @@ function JsonEditPage({ state }: JsonEditProps) {
         <div>
             <ExpandComponent
                 headerText="GUIDE"
-                >
+            >
                 <div>
                     You can load these files from the project's data folder:
                     <br />
@@ -206,27 +210,28 @@ function JsonEditPage({ state }: JsonEditProps) {
                     <br />
                     The "SAVE" button will save both the sitelen lasina and the original text, but it must be exported to be usable by RPGMaker.
                     <br />
-                    <span style={{color:"red"}}>-- SAVING seems to be broken at the moment. For now just export and discard the original name/desc --</span> 
+                    <span style={{ color: "red" }}>-- SAVING seems to be broken at the moment. For now just export and discard the original name/desc --</span>
                     <br />
                     If you've changed anything from RPGMaker (for example, edited a skill's script), you can load these changes into your save
                     by clicking the "UPDATE" button and selecting the changed file (must be the same kind of file!)
                     <br />
-                    This will load the selected file and apply the currently loaded names and descriptions 
+                    This will load the selected file and apply the currently loaded names and descriptions
                     (don't forget to save/export after)
                     <br />
                     <br />
                     Checking "Combine entries with the same name" will hide repeated entries with the same name and will let you edit all of them at once.
                 </div>
-            </ExpandComponent>         
-            <FilePicker accept=".json,.json.save" onFileChanged={fileChanged} text="LOAD JSON FILE"/>
-            <CheckBox checked={combineChecked} setChecked={setCombineChecked} text="Combine entries with the same name"/>
-            
-
+            </ExpandComponent>
+            <FilePicker accept=".json,.json.save"
+                onFileChanged={fileChanged}
+                text="LOAD JSON FILE"
+                fileName={state.file?.fileName ?? null} />
+            <CheckBox checked={combineChecked} setChecked={setCombineChecked} text="Combine entries with the same name" />
             {
                 (state.edits ?? [])
                     .filter((entry, index) => {
-                        if(!combineChecked) return true;
-                        return state.edits.findIndex(findEntry=>findEntry.originalName==entry.originalName) == index;
+                        if (!combineChecked) return true;
+                        return state.edits.findIndex(findEntry => findEntry.originalName == entry.originalName) == index;
                     })
                     .map((entry, index) =>
                         <JsonEntryComponent
@@ -241,8 +246,9 @@ function JsonEditPage({ state }: JsonEditProps) {
                 text="UPDATE"
                 onFileChanged={updateFile}
                 accept=".json"
-                show={(state.edits ?? []).length != 0} 
-                showFilename={false}/>
+                fileName={state.file?.fileName ?? null}
+                show={(state.edits ?? []).length != 0}
+                showFilename={false} />
             <SaveButton
                 text="SAVE FILE"
                 onClick={() => saveFile()}
